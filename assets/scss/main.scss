@@ -1,0 +1,151 @@
+/* =========================================
+   1. VARIABLES MINIMALISTAS (LIGHT)
+   ========================================= */
+$bg-color: #ffffff;          /* Fondo Blanco Puro */
+$header-bg: #ffffff;         /* Header Blanco */
+$text-main: #2c3e50;         /* Texto Gris Oscuro (Profesional) */
+$text-muted: #95a5a6;        /* Texto secundario suave */
+$accent-color: #2980b9;      /* Azul Minimalista */
+$border-color: #eaeaea;      /* Bordes muy suaves */
+
+/* Estilos de Botones (Compactos) */
+$btn-bg: #ffffff;
+$btn-border: #e0e0e0;
+$btn-hover: #f8f9fa;         /* Gris muy claro al pasar el mouse */
+
+$font-stack: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+
+body {
+  background-color: $bg-color;
+  color: $text-main;
+  font-family: $font-stack;
+  margin: 0; padding: 0;
+  line-height: 1.6;
+}
+a { text-decoration: none; color: inherit; transition: 0.2s; }
+
+/* =========================================
+   2. HEADER COMPACTO & MINIMALISTA
+   ========================================= */
+header {
+  width: 100%;
+  background-color: $header-bg;
+  border-bottom: 1px solid $border-color;
+  padding: 12px 40px; /* Padding vertical reducido (Tight) */
+  box-sizing: border-box;
+
+  .header-container {
+    max-width: 1200px; /* Ancho máximo para pantallas gigantes */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* --- IZQUIERDA --- */
+  .header-left {
+    display: flex; align-items: center; gap: 20px;
+
+    /* Marca */
+    .brand {
+      display: flex; align-items: center; gap: 10px;
+
+      .logo-box {
+        width: 36px;  /* PEQUEÑO: 36px */
+        height: 36px;
+        background-color: #f3f4f6; /* Fondo gris claro para el logo */
+        border-radius: 8px;
+        border: 1px solid $border-color;
+        display: flex; align-items: center; justify-content: center;
+        overflow: hidden;
+
+        img { width: 50px; height: 50px; object-fit: contain; }
+        i { color: #000; font-size: 18px; }
+      }
+
+      .brand-text {
+        display: flex; flex-direction: column; line-height: 1.1;
+        .name { font-weight: 800; font-size: 1rem; color: #000; }
+        .role { font-size: 0.75rem; color: $text-muted; font-weight: 500; }
+      }
+    }
+
+    /* Línea divisoria sutil */
+    .divider { height: 24px; width: 1px; background-color: $border-color; }
+
+    /* Dock Social */
+    .social-dock {
+      display: flex; gap: 8px;
+
+      .social-btn {
+        width: 36px;  /* PEQUEÑO: 36px */
+        height: 36px;
+        background-color: $btn-bg;
+        border: 1px solid $btn-border;
+        border-radius: 8px; /* Bordes suaves estilo Apple */
+        display: flex; align-items: center; justify-content: center;
+        color: $text-main; /* Iconos oscuros sobre fondo blanco */
+        font-size: 0.95rem;
+
+        &:hover {
+          background-color: $text-main; /* Invertir colores: Fondo oscuro */
+          color: #fff;                  /* Icono blanco */
+          border-color: $text-main;
+          transform: translateY(-1px);
+        }
+      }
+    }
+  }
+
+  /* --- DERECHA --- */
+  .header-right {
+    .main-menu {
+      display: flex; gap: 25px;
+      .menu-link {
+        color: $text-main; font-weight: 600; font-size: 0.9rem;
+        &:hover { color: $accent-color; }
+      }
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  header { padding: 15px 20px; }
+  .header-container { flex-direction: column; gap: 15px; align-items: flex-start; }
+  .header-left { flex-direction: column; align-items: flex-start; width: 100%; gap: 15px; }
+  .divider { display: none; }
+  .header-right { width: 100%; border-top: 1px dashed $border-color; padding-top: 15px; display: flex; justify-content: center; }
+}
+
+/* =========================================
+   3. CONTENIDO RESTANTE
+   ========================================= */
+.content-wrapper {
+  max-width: 900px; /* Ancho de lectura cómodo */
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+h1, h2, h3 { color: #000; margin-top: 1.5em; }
+h1 { border-bottom: 2px solid $btn-hover; padding-bottom: 0.5em; font-size: 2rem; letter-spacing: -0.5px;}
+
+.post-list {
+  list-style: none; padding: 0;
+  .post-entry {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 12px 0; border-bottom: 1px solid $border-color;
+    
+    .post-title { font-weight: 600; color: #000; font-size: 1.05rem; }
+    .post-title:hover { color: $accent-color; text-decoration: underline; }
+    .post-date { color: $text-muted; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+  }
+}
+
+/* Código limpio light */
+code { background: #f4f5f7; padding: 3px 6px; border-radius: 4px; color: #c7254e; font-family: Consolas, monospace; font-size: 0.9em; border: 1px solid #e1e4e8;}
+pre { background: #f6f8fa; padding: 15px; border-radius: 8px; border: 1px solid $border-color; overflow-x: auto; 
+  code { border: none; color: inherit; background: none; }
+}
+
+footer { margin-top: 60px; text-align: center; color: $text-muted; font-size: 0.8rem; border-top: 1px solid $border-color; padding-top: 20px;}

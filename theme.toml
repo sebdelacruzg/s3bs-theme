@@ -1,0 +1,11 @@
+name = "S3bs Theme"
+license = "MIT"
+licenselink = "https://github.com/sebdelacruzg/s3bs-theme/blob/main/LICENSE"
+description = "A minimal, hacker-style theme for cybersecurity writeups."
+homepage = "https://github.com/sebdelacruzg/s3bs-theme"
+tags = ["minimal", "blog", "security", "clean"]
+features = ["dark mode", "syntax highlighting", "responsive"]
+min_version = "0.120.0"
+
+[author]
+  name = "S3bs"

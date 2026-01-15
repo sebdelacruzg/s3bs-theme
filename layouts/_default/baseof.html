@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ block "title" . }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    
+    {{ $sass := resources.Get "scss/main.scss" }}
+    {{ $style := $sass | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="icon" href="/favicon.png" type="image/png">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="header-left">
+                <a href="{{ .Site.BaseURL }}" class="brand">
+                    <div class="logo-box">
+                        {{ $logo := resources.Get "img/skull.png" }} 
+                        {{ if $logo }}
+                            <img src="{{ $logo.RelPermalink }}" alt="Logo">
+                        {{ else }}
+                            <i class="fa-solid fa-skull"></i>
+                        {{ end }}
+                    </div>
+                    
+                    <div class="brand-text">
+                        <span class="name">{{ .Site.Title }}</span>
+                        <span class="role">{{ .Site.Params.subtitle }}</span>
+                    </div>
+                </a>
+
+                <div class="divider"></div>
+                
+                <nav class="social-dock">
+                    {{ range .Site.Params.social }}
+                    <a href="{{ .url }}" target="_blank" class="social-btn" aria-label="{{ .name }}">
+                        {{ if .icon }}
+                            <i class="{{ .icon }}"></i>
+                        {{ else }}
+                            <i class="fa-brands fa-{{ .name }}"></i>
+                        {{ end }}
+                    </a>
+                    {{ end }}
+                </nav>
+            </div>
+
+            <div class="header-right">
+                <nav class="main-menu">
+                    <a href="{{ .Site.BaseURL }}" class="menu-link">Home</a>
+                    <a href="/posts" class="menu-link">Posts</a>
+                    <a href="/contact" class="menu-link">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="content-wrapper">
+        <main>
+            {{ block "main" . }}{{ end }}
+        </main>
+
+        <footer>
+            <p>© {{ now.Format "2006" }} {{ .Site.Title }}.</p>
+        </footer>
+    </div>
+</body>
+</html>
